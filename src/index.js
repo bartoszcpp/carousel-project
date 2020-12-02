@@ -134,4 +134,34 @@ if (screen && screen.width > 768) {
     },
     false
   );
+} else {
+  sliderContainer.addEventListener("touchstart", handleTouchStart, false);
+  sliderContainer.addEventListener("touchmove", handleTouchMove, false);
+  let xDown = null;
+  let yDown = null;
+
+  function handleTouchStart(evt) {
+    xDown = evt.touches[0].clientX;
+    yDown = evt.touches[0].clientY;
+  }
+
+  function handleTouchMove(evt) {
+    if (!xDown || !yDown) {
+      return;
+    }
+    let xUp = evt.touches[0].clientX;
+    let yUp = evt.touches[0].clientY;
+    let xDiff = xDown - xUp;
+    let yDiff = yDown - yUp;
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+      if (xDiff > 0) {
+        nextElement();
+      } else {
+        prevElement();
+      }
+    }
+    xDown = null;
+    yDown = null;
+  }
 }
