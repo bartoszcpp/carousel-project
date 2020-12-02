@@ -117,20 +117,22 @@ window.setInterval(function () {
   }
 }, 1000);
 
-//stop timer when mouse is hover on element
-sliderContainer.addEventListener(
-  "mouseover",
-  () => {
-    setPause = true;
-    time = 0;
-  },
-  false
-);
+if (screen && screen.width > 768) {
+  //stop timer when mouse is hover on element
+  sliderContainer.addEventListener(
+    "mouseover",
+    () => {
+      setPause = true;
+      time = 0;
+    },
+    false
+  );
 
-sliderContainer.addEventListener(
-  "mouseleave",
-  () => {
-    setPause = false;
-  },
-  false
-);
+  sliderContainer.addEventListener(
+    "mouseleave",
+    () => {
+      setPause = false;
+    },
+    false
+  );
+}
