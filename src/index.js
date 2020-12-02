@@ -106,7 +106,6 @@ const addFrame = (index) => {
 
 //interval function
 window.setInterval(function () {
-  console.log(setPause);
   if (!setPause) {
     time++;
     timeContainer.innerHTML = 5 - time;

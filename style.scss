@@ -103,4 +103,10 @@ body {
   #slider div img {
     width: 100vw;
   }
+  #thumbnails {
+    div img {
+      max-width: 60px;
+      padding: 5px;
+    }
+  }
 }
