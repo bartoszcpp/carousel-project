@@ -50,6 +50,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: fit-content;
+  width: -moz-fit-content;
   margin: auto;
   div img {
     max-width: 90px;
@@ -92,6 +93,7 @@ body {
   color: white;
   background-color: rgba(63, 63, 63, 0.85);
   width: fit-content;
+  width: -moz-fit-content;
   margin: auto;
   padding: 5px;
 }
