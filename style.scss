@@ -281,19 +281,24 @@ html main {
   }
 
   .next {
-    .first-element {
+    .first-element,
+    .second-element {
       animation-duration: 0.1s;
-      animation: none;
     }
   }
 
-  .prev {
-    .second-element,
-    .first-element {
-      animation-duration: 0.2s;
-      animation-name: slideinPrev;
-    }
-  }
+  // .next-slide,
+  // .prev-slide {
+  //   display: none !important;
+  // }
+
+  // .prev {
+  //   .second-element,
+  //   .first-element {
+  //     animation-duration: 0.2s;
+  //     animation-name: slideinPrev;
+  //   }
+  // }
 
   .hero-container {
     .hero__child___button {
