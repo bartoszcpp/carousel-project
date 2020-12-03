@@ -28,7 +28,6 @@ html main {
   div {
     top: 0;
     display: none;
-    //transition: all 1s linear;
     filter: opacity(0.8);
     img {
       width: 50vw;
@@ -306,5 +305,9 @@ html main {
         margin: 10px;
       }
     }
+  }
+
+  main {
+    touch-action: none;
   }
 }
