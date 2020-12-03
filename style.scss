@@ -241,8 +241,8 @@ html main {
 
   .next {
     .first-element {
-      animation-duration: 0.2s;
-      animation-name: slideinNext;
+      animation-duration: 0.1s;
+      animation: none;
     }
   }
 
@@ -251,6 +251,14 @@ html main {
     .first-element {
       animation-duration: 0.2s;
       animation-name: slideinPrev;
+    }
+  }
+
+  .hero-container {
+    .hero__child___button {
+      button {
+        margin: 10px;
+      }
     }
   }
 }
