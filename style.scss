@@ -261,12 +261,14 @@ html main {
 }
 
 @media (max-width: 768px) {
-  .second-element,
-  .second-default-element {
-    display: none !important;
-  }
-  #slider div img {
-    width: 100vw;
+  #slider {
+    .second-element,
+    .second-default-element {
+      display: none !important;
+    }
+    div img {
+      width: 100vw;
+    }
   }
   #thumbnails {
     div img {

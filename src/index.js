@@ -200,7 +200,7 @@ function handleTouchMove(evt) {
   }
   let xUp = null;
   let yUp = null;
-  if (evt.type === "touchstart") {
+  if (evt.type === "touchmove") {
     xUp = evt.touches[0].clientX;
     yUp = evt.touches[0].clientY;
   } else {
