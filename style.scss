@@ -40,16 +40,19 @@ html main {
 
 .next {
   .first-element {
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-name: slideinNext;
   }
 }
 
 .prev {
-  .second-element,
   .first-element {
-    animation-duration: 1s;
-    animation-name: slideinPrev;
+    animation-duration: 0.5s;
+    animation-name: slideinPrevFirst;
+  }
+  .second-element {
+    animation-duration: 0.5s;
+    animation-name: slideinPrevSecond;
   }
 }
 
@@ -81,9 +84,23 @@ html main {
   display: block !important;
 }
 
+.prev-slide {
+  animation-duration: 0.5s;
+  animation-name: slideinPrevSlide;
+  display: block !important;
+  order: 3;
+}
+
+.next-slide {
+  animation-duration: 0.5s;
+  animation-name: slideinNextSlide;
+  display: block !important;
+  margin-left: -50%;
+}
+
 @keyframes slideinNext {
   from {
-    margin-left: 50%;
+    margin-left: 0%;
   }
 
   to {
@@ -91,9 +108,18 @@ html main {
   }
 }
 
-@keyframes slideinPrev {
+@keyframes slideinPrevFirst {
   from {
     margin-left: -50%;
+  }
+
+  to {
+    margin-left: 0%;
+  }
+}
+@keyframes slideinPrevSecond {
+  from {
+    margin-left: 0%;
   }
 
   to {
@@ -107,7 +133,17 @@ html main {
   }
 
   to {
-    margin-left: -100%;
+    margin-left: 0%;
+  }
+}
+
+@keyframes slideinNextSlide {
+  from {
+    margin-left: 0%;
+  }
+
+  to {
+    margin-left: -50%;
   }
 }
 

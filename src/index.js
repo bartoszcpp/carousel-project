@@ -27,6 +27,10 @@ const childrenThumbnails = [].slice.call(thumbnails.children);
 thumbnails.children[0].classList.add("frame");
 
 thumbnails.onclick = function (e) {
+  imgList.classList.remove("next");
+  imgList.classList.remove("prev");
+  imgList.classList.remove("default");
+  imgList.classList.add("default");
   let tgt = e.target,
     i = 0,
     items;
@@ -64,7 +68,22 @@ btnPrev.onclick = function () {
 const nextElement = () => {
   imgList.classList.remove("next");
   imgList.classList.remove("prev");
+  imgList.classList.remove("default");
   imgList.classList.add("next");
+
+  let nextSlide1 = null;
+  const nextSlide = document.getElementsByClassName("first-default-element");
+  if (nextSlide.length !== 2) {
+    nextSlide1 = document.getElementsByClassName("first-element");
+  } else {
+    nextSlide1 = nextSlide;
+  }
+  nextSlide1[0].classList.add("next-slide");
+  setTimeout(function () {
+    const nextSlide2 = document.getElementsByClassName("next-slide");
+    nextSlide2[0].classList.remove("next-slide");
+  }, 500);
+
   if (counter < imgList.children.length - 1) {
     changeSlide(counter, counter + 1);
     counter = counter + 1;
@@ -77,7 +96,22 @@ const nextElement = () => {
 const prevElement = () => {
   imgList.classList.remove("next");
   imgList.classList.remove("prev");
+  imgList.classList.remove("default");
   imgList.classList.add("prev");
+
+  let prevSlide1 = null;
+  const prevSlide = document.getElementsByClassName("second-default-element");
+  if (prevSlide.length !== 2) {
+    prevSlide1 = document.getElementsByClassName("second-element");
+  } else {
+    prevSlide1 = prevSlide;
+  }
+  prevSlide1[0].classList.add("prev-slide");
+  setTimeout(function () {
+    const prevSlide2 = document.getElementsByClassName("prev-slide");
+    prevSlide2[0].classList.remove("prev-slide");
+  }, 500);
+
   let lastIndex = imgList.children.length - 1;
   if (counter > 1) {
     changeSlide(counter - 2, counter - 1);
@@ -142,34 +176,49 @@ if (screen && screen.width > 768) {
     },
     false
   );
-} else {
-  sliderContainer.addEventListener("touchstart", handleTouchStart, false);
-  sliderContainer.addEventListener("touchmove", handleTouchMove, false);
-  let xDown = null;
-  let yDown = null;
+}
+sliderContainer.addEventListener("touchstart", handleTouchStart, false);
+sliderContainer.addEventListener("touchmove", handleTouchMove, false);
+sliderContainer.addEventListener("mousedown", handleTouchStart, false);
+sliderContainer.addEventListener("mousemove", handleTouchMove, false);
+let xDown = null;
+let yDown = null;
 
-  function handleTouchStart(evt) {
+function handleTouchStart(evt) {
+  if (evt.type === "touchstart") {
     xDown = evt.touches[0].clientX;
     yDown = evt.touches[0].clientY;
+  } else {
+    xDown = evt.clientX;
+    yDown = evt.clientY;
+  }
+}
+
+function handleTouchMove(evt) {
+  if (!xDown || !yDown) {
+    return;
+  }
+  let xUp = null;
+  let yUp = null;
+  if (evt.type === "touchstart") {
+    xUp = evt.touches[0].clientX;
+    yUp = evt.touches[0].clientY;
+  } else {
+    xUp = evt.clientX;
+    yUp = evt.clientY;
   }
 
-  function handleTouchMove(evt) {
-    if (!xDown || !yDown) {
-      return;
-    }
-    let xUp = evt.touches[0].clientX;
-    let yUp = evt.touches[0].clientY;
-    let xDiff = xDown - xUp;
-    let yDiff = yDown - yUp;
+  let xDiff = xDown - xUp;
+  let yDiff = yDown - yUp;
+  console.log(xDiff);
 
-    if (Math.abs(xDiff) > Math.abs(yDiff)) {
-      if (xDiff > 0) {
-        nextElement();
-      } else {
-        prevElement();
-      }
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 1) {
+      nextElement();
+    } else if (xDiff < -3) {
+      prevElement();
     }
-    xDown = null;
-    yDown = null;
   }
+  xDown = null;
+  yDown = null;
 }
