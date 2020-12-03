@@ -210,12 +210,21 @@ function handleTouchMove(evt) {
 
   let xDiff = xDown - xUp;
   let yDiff = yDown - yUp;
-  console.log(xDiff);
+  let value1 = 0;
+  let value2 = 0;
+
+  if (screen && screen.width > 768) {
+    value1 = 1;
+    value2 = -3;
+  } else {
+    value1 = 0;
+    value2 = 0;
+  }
 
   if (Math.abs(xDiff) > Math.abs(yDiff)) {
-    if (xDiff > 1) {
+    if (xDiff > value1) {
       nextElement();
-    } else if (xDiff < -3) {
+    } else if (xDiff < value2) {
       prevElement();
     }
   }

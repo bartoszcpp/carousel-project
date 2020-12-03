@@ -261,7 +261,8 @@ html main {
 }
 
 @media (max-width: 768px) {
-  .second-element {
+  .second-element,
+  .second-default-element {
     display: none !important;
   }
   #slider div img {
