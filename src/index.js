@@ -105,16 +105,16 @@ const addFrame = (index) => {
 };
 
 //interval function
-window.setInterval(function () {
-  if (!setPause) {
-    time++;
-    timeContainer.innerHTML = 5 - time;
-    if (time === 5) {
-      nextElement();
-      time = 0;
-    }
-  }
-}, 1000);
+// window.setInterval(function () {
+//   if (!setPause) {
+//     time++;
+//     timeContainer.innerHTML = 5 - time;
+//     if (time === 5) {
+//       nextElement();
+//       time = 0;
+//     }
+//   }
+// }, 1000);
 
 if (screen && screen.width > 768) {
   //stop timer when mouse is hover on element
