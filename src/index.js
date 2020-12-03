@@ -62,6 +62,9 @@ btnPrev.onclick = function () {
 };
 
 const nextElement = () => {
+  imgList.classList.remove("next");
+  imgList.classList.remove("prev");
+  imgList.classList.add("next");
   if (counter < imgList.children.length - 1) {
     changeSlide(counter, counter + 1);
     counter = counter + 1;
@@ -72,6 +75,9 @@ const nextElement = () => {
 };
 
 const prevElement = () => {
+  imgList.classList.remove("next");
+  imgList.classList.remove("prev");
+  imgList.classList.add("prev");
   let lastIndex = imgList.children.length - 1;
   if (counter > 1) {
     changeSlide(counter - 2, counter - 1);
@@ -90,6 +96,8 @@ const changeSlide = (index1, index2) => {
   childrenImg.forEach((slide) => {
     slide.classList.remove("first-element");
     slide.classList.remove("second-element");
+    slide.classList.remove("first-default-element");
+    slide.classList.remove("second-default-element");
   });
   addFrame(index1);
   imgList.children[index1].classList.add("first-element");
@@ -105,16 +113,16 @@ const addFrame = (index) => {
 };
 
 //interval function
-// window.setInterval(function () {
-//   if (!setPause) {
-//     time++;
-//     timeContainer.innerHTML = 5 - time;
-//     if (time === 5) {
-//       nextElement();
-//       time = 0;
-//     }
-//   }
-// }, 1000);
+window.setInterval(function () {
+  if (!setPause) {
+    time++;
+    timeContainer.innerHTML = 5 - time;
+    if (time === 5) {
+      nextElement();
+      time = 0;
+    }
+  }
+}, 1000);
 
 if (screen && screen.width > 768) {
   //stop timer when mouse is hover on element
@@ -122,7 +130,7 @@ if (screen && screen.width > 768) {
     "mouseover",
     () => {
       setPause = true;
-      time = 0;
+      // time = 0;
     },
     false
   );

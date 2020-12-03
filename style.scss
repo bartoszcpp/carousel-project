@@ -10,6 +10,11 @@ html button:focus {
 
 body {
   margin: 0;
+  width: 100%;
+}
+
+html main {
+  width: 100%;
 }
 
 #slider {
@@ -23,6 +28,7 @@ body {
   div {
     top: 0;
     display: none;
+    //transition: all 1s linear;
     filter: opacity(0.8);
     img {
       width: 50vw;
@@ -32,9 +38,36 @@ body {
   }
 }
 
+.next {
+  .first-element {
+    animation-duration: 1s;
+    animation-name: slideinNext;
+  }
+}
+
+.prev {
+  .second-element,
+  .first-element {
+    animation-duration: 1s;
+    animation-name: slideinPrev;
+  }
+}
+
 .slider-container {
   position: relative;
   height: 100vh;
+  width: 100%;
+}
+
+.first-default-element {
+  left: 0;
+  order: 1;
+  display: block !important;
+}
+
+.second-default-element {
+  order: 2;
+  display: block !important;
 }
 
 .first-element {
@@ -44,9 +77,44 @@ body {
 }
 
 .second-element {
-  left: 50%;
   order: 2;
   display: block !important;
+}
+
+.prev-slide {
+  animation-duration: 1s;
+  animation-name: slideinPrevSlide;
+  display: block !important;
+}
+
+@keyframes slideinNext {
+  from {
+    margin-left: 50%;
+  }
+
+  to {
+    margin-left: 0%;
+  }
+}
+
+@keyframes slideinPrev {
+  from {
+    margin-left: -50%;
+  }
+
+  to {
+    margin-left: 0%;
+  }
+}
+
+@keyframes slideinPrevSlide {
+  from {
+    margin-left: 0%;
+  }
+
+  to {
+    margin-left: -100%;
+  }
 }
 
 .img-fluid {
