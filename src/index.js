@@ -159,7 +159,6 @@ window.setInterval(function () {
 }, 1000);
 
 if (screen && screen.width > 768) {
-  //stop timer when mouse is hover on element
   sliderContainer.addEventListener(
     "mouseover",
     () => {

@@ -286,19 +286,6 @@ html main {
     }
   }
 
-  // .next-slide,
-  // .prev-slide {
-  //   display: none !important;
-  // }
-
-  // .prev {
-  //   .second-element,
-  //   .first-element {
-  //     animation-duration: 0.2s;
-  //     animation-name: slideinPrev;
-  //   }
-  // }
-
   .hero-container {
     .hero__child___button {
       button {
@@ -308,6 +295,6 @@ html main {
   }
 
   main {
-    touch-action: none;
+    touch-action: pan-y;
   }
 }
