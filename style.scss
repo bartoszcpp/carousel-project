@@ -81,12 +81,6 @@ html main {
   display: block !important;
 }
 
-.prev-slide {
-  animation-duration: 1s;
-  animation-name: slideinPrevSlide;
-  display: block !important;
-}
-
 @keyframes slideinNext {
   from {
     margin-left: 50%;
@@ -243,5 +237,20 @@ html main {
   }
   .arrows-container {
     display: none;
+  }
+
+  .next {
+    .first-element {
+      animation-duration: 0.2s;
+      animation-name: slideinNext;
+    }
+  }
+
+  .prev {
+    .second-element,
+    .first-element {
+      animation-duration: 0.2s;
+      animation-name: slideinPrev;
+    }
   }
 }
